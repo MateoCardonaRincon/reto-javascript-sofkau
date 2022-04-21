@@ -1,12 +1,10 @@
 
 const createButton = (id, value, position) => {
-  console.log
   let thisBtn = document.createElement("input");
   thisBtn.setAttribute("type", "button");
   thisBtn.setAttribute("id", id);
   thisBtn.setAttribute("value", value);
   document.getElementById(position).appendChild(thisBtn);
-  return thisBtn;
 };
 
 const menu = () => {

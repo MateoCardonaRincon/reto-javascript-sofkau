@@ -86,5 +86,27 @@ let QUESTIONS_C1 = [
         is_correct: false,
       },
     ],
+  },
+  {
+    id: 5,
+    question: "¿Cuanto es 4+2?",
+    answers: [
+      {
+        answer: "6",
+        is_correct: true,
+      },
+      {
+        answer: "8",
+        is_correct: false,
+      },
+      {
+        answer: "3",
+        is_correct: false,
+      },
+      {
+        answer: "4",
+        is_correct: false,
+      },
+    ],
   }
 ];

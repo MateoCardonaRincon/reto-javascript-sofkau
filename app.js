@@ -1,3 +1,3 @@
-import menu from "./vistas/menu.js";
+import menu from "./views/menu.js";
 
 menu()
