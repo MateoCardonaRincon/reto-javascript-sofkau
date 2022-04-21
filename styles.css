@@ -1,6 +1,7 @@
 body {
   background-color: #ffffff;
   margin-bottom: 8%;
+  min-height: 100%;
 }
 
 .header {

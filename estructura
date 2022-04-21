@@ -1,0 +1,49 @@
+
+Menu princial
+
+
+1. jugar juego: continua un juego
+	
+	nombre
+	nivel o ronda 
+	pregunta
+	4 respuestas.
+	cuadro con los ganoderes
+	puntaje
+
+	Retirarse ->permite conservar los puntos. 
+
+2. agregar pregunta.
+	pregunta 
+	3 respuestas falsas
+	1 respuesta correcta
+
+3. historial.
+
+Extructura Json
+
+player:{
+id:
+name:
+score:
+level
+}
+
+round:{
+question
+option1:
+option2:
+option3:
+option4:
+answer:
+level:
+}
+
+game=[round]
+
+vistas:
+
+menu principal
+agregar preguntas
+ronda
+historial

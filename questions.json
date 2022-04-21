@@ -1,0 +1,48 @@
+[
+  {
+    "id": 1,
+    "question": "¿Cuanto es 1+1?",
+    "category": 1,
+    "answers": [
+      "answer1": {
+        "answer": "2",
+        "is_correct": true
+      },
+      "answer2": {
+        "answer": "1",
+        "is_correct": false
+      },
+      "answer3": {
+        "answer": "3",
+        "is_correct": false
+      },
+      "answer4": {
+        "answer": "4",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "¿Cuanto es 2+2?",
+    "category": 1,
+    "answers": {
+      "answer1": {
+        "answer": "4",
+        "is_correct": true
+      },
+      "answer2": {
+        "answer": "2",
+        "is_correct": false
+      },
+      "answer3": {
+        "answer": "3",
+        "is_correct": false
+      },
+      "answer4": {
+        "answer": "5",
+        "is_correct": false
+      }
+    }
+  }
+]
