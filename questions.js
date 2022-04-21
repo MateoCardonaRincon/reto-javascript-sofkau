@@ -89,22 +89,22 @@ let QUESTIONS_C1 = [
   },
   {
     id: 5,
-    question: "¿Cuanto es 4+2?",
+    question: "¿Cuanto es 3+3?",
     answers: [
       {
         answer: "6",
         is_correct: true,
       },
       {
+        answer: "2",
+        is_correct: false,
+      },
+      {
         answer: "8",
         is_correct: false,
       },
       {
-        answer: "3",
-        is_correct: false,
-      },
-      {
-        answer: "4",
+        answer: "10",
         is_correct: false,
       },
     ],
