@@ -5,6 +5,7 @@ const createButton = (id, value, position) => {
   thisBtn.setAttribute("type", "button");
   thisBtn.setAttribute("id", id);
   thisBtn.setAttribute("value", value);
+  thisBtn.setAttribute("class", "buttons");
   document.getElementById(position).appendChild(thisBtn);
   return thisBtn;
 };
