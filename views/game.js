@@ -4,7 +4,6 @@
 let  game_init=async ()=>{
     let btn_init_game=document.createElement("input")
     let name_input=document.createElement("input")
-    let level=0
     
   
 
@@ -19,8 +18,8 @@ let  game_init=async ()=>{
     //init the round
     btn_init_game.addEventListener("click", ()=>{
 
-            initRound(level);
-            level++
+            initRound(0);
+            
         })
     
     
@@ -32,6 +31,8 @@ let  game_init=async ()=>{
     
 
 }
+
+//Get an object with all the question information
 async function getQuestionObject(index){
     let questions=await JSON.parse(localStorage.getItem("Questions"));
     let question=await questions[index]
@@ -40,14 +41,15 @@ async function getQuestionObject(index){
 
     
 }
-async function getQuestion(index){
-    let questionObject=await getQuestionObject(index);
+
+//Get the question 
+async function getQuestion(index_round,index_question){
+    let questionObject=await getQuestionObject(index_question);
     let question=await questionObject.question
-
-    return  question
-
-    
+    return question
 }
+
+// Init a new round
 async function initRound(index_round){
     document.getElementById("middle").innerHTML=""
     let question_div=document.createElement("div")
@@ -55,17 +57,20 @@ async function initRound(index_round){
     //add data to the body of the table
     let table=document.createElement('table');
 
+    //generate a random index of a question
+    let index_question=getRandomInt(0,4)
+
     //set question
-    question_div.innerHTML=  await getQuestion(index_round)
+    question_div.innerHTML=  await getQuestion(index_round,index_question)
     
     //set posible answer to the question
-    for( let index=0; index<4; index++){
-        let answ=await getChoise(0,index);
+    for( let index_choice=0; index_choice<4; index_choice++){
+        let answ=await getChoise(index_question,index_choice);
         let row=document.createElement("tr")
         let collum= document.createElement("tb")
         collum.innerHTML =answ
         row.appendChild(collum)
-        row.addEventListener("click", chechAnswer)
+        row.addEventListener("click",()=> chechAnswer(index_question, index_choice,index_round+1))
         table.appendChild(row)
     }
     answer_div.appendChild(table)
@@ -78,6 +83,7 @@ async function initRound(index_round){
     
 }
 
+// get a posible answer for a question
 async function  getChoise(index_question, index_choice){
     let question=await getQuestionObject(index_question);
     let choices=await question.answers;
@@ -88,9 +94,34 @@ async function  getChoise(index_question, index_choice){
     
 }
 
-function chechAnswer(){
-    console.log("check")
+// get the answer for a question
+async function isCorrect(index_question, index_choice){
+    let question=await getQuestionObject(index_question);
+    let choices=await question.answers;
+    let choice_object=await choices[index_choice]
+    let answer=await choice_object.is_correct
+
+    return answer
+    
+}
+
+//check if the answer is correct
+
+async function chechAnswer(index_question, index_choice, level){
+    let answer=await isCorrect(index_question, index_choice)
+    if(answer){
+        console.log("check")
+        initRound(level)
+        
+    }
+    
+    
 
 }
+
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 
 export default game_init;
