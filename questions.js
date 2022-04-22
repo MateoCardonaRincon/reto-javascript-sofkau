@@ -88,3 +88,9 @@ let QUESTIONS_C1 = [
     ],
   }
 ];
+
+function save(){
+localStorage.setItem("Questions",  JSON.stringify(QUESTIONS_C1 ));
+}
+
+export default save
