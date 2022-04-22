@@ -1,23 +1,28 @@
+html,
 body {
   background-color: #212529;
-  margin-bottom: 100px;
 }
 
 .header {
+  position: fixed;
   background-color: #e3a125;
+  width: 100%;
+  padding: 10px;
+  top: 0;
 }
 
 .footer {
   position: fixed;
-  width: 100%;
   background-color: #29a2ed;
-  bottom: 0;
+  width: 100%;
+  padding: 10px;
+  bottom: 0px;
 }
 
 table,
 tr,
 th {
-  width: 50%;
+  width: 40%;
   border: 1px;
   margin: 10px;
 }
@@ -38,7 +43,6 @@ th {
 td {
   border-left: 1px solid;
   text-align: center;
-  vertical-align: center;
   padding: 10px;
 }
 
@@ -52,6 +56,7 @@ tr:nth-child(odd) {
 
 tr:hover {
   background-color: #e3a125;
+  font-weight: bold;
 }
 
 .buttons {
@@ -59,16 +64,19 @@ tr:hover {
   background-color: #1d53af;
   border-radius: 5px;
   border: 0;
-  margin: auto;
-  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  width: 40%;
   height: 40px;
   font-weight: bold;
 }
 
 .buttons:hover {
-  background-color:#29a2ed;
-  color:#212529;
-  width: 51%; 
+  background-color: #29a2ed;
+  color: #212529;
+  width: 41%;
 }
 
 .title {
@@ -77,4 +85,13 @@ tr:hover {
   justify-content: center;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+#body-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  margin: 100px;
+  height: 100%;
 }
