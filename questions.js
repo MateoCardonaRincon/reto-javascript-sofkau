@@ -110,3 +110,5 @@ let QUESTIONS_C1 = [
     ],
   }
 ];
+
+export default QUESTIONS_C1;
