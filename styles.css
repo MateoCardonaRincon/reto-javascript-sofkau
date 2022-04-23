@@ -14,3 +14,7 @@ body {
   background-color: #29a2ed;
   bottom: 0;
 }
+
+.hidden {
+  display: none;
+}

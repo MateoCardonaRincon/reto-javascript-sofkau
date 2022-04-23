@@ -1,34 +1,36 @@
-
+import showRecords from "../modules/showRecords.js";
+import createQuestionForm from "./addQuestion.js";
+("./addQuestion");
 const createButton = (id, value, position) => {
   let thisBtn = document.createElement("input");
   thisBtn.setAttribute("type", "button");
   thisBtn.setAttribute("id", id);
   thisBtn.setAttribute("value", value);
   document.getElementById(position).appendChild(thisBtn);
+  return thisBtn;
 };
 
 const menu = () => {
   //play button
-  createButton("playBtn", "Jugar", "top")
+  let playBtn = createButton("playBtn", "Jugar", "top");
 
   // records button
-  createButton("recordsBtn", "Historial", "middle")
+  let recordsBtn = createButton("recordsBtn", "Historial", "middle");
 
   // add a question
-  createButton("addQuestionBtn", "Añadir pregunta", "bottom")
+  let addQuestionBtn = createButton(
+    "addQuestionBtn",
+    "Añadir pregunta",
+    "bottom"
+  );
 
-  // events
-  // playBtn.addEventListener("click", () => {
-  //   console.log("Jugar");
-  // });
+  playBtn.addEventListener("click", () => {});
 
-  // recordsBtn.addEventListener("click", () => {
-  //   console.log("Historial");
-  // });
+  recordsBtn.addEventListener("click", () => {
+    showRecords();
+  });
 
-  // addQuestionBtn.addEventListener("click", () => {
-  //   console.log("Agregar preguntas");
-  // });
+  addQuestionBtn.addEventListener("click", () => {});
 };
 
 export default menu;
