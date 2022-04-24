@@ -86,11 +86,29 @@ let QUESTIONS_C1 = [
         is_correct: false,
       },
     ],
+  },
+  {
+    id: 5,
+    question: "¿Cuanto es 3+3?",
+    answers: [
+      {
+        answer: "6",
+        is_correct: true,
+      },
+      {
+        answer: "2",
+        is_correct: false,
+      },
+      {
+        answer: "8",
+        is_correct: false,
+      },
+      {
+        answer: "10",
+        is_correct: false,
+      },
+    ],
   }
 ];
 
-function save(){
-localStorage.setItem("Questions",  JSON.stringify(QUESTIONS_C1 ));
-}
-
-export default save
+export default QUESTIONS_C1;
