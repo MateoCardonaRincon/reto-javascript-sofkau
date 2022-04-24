@@ -6,7 +6,7 @@ var bdiv = document.querySelector("#body-div");
 const showRecords = () => {
     // Saving parent's current children (Menu elements)
     let savedMenu = saveMenuChildren()
-    let retrievedData = JSON.parse(localStorage.getItem("Records"))
+    let retrievedData = JSON.parse(localStorage.getItem("records"))
     let data = retrievedData === null ? [] : retrievedData
 
     // Replacing the prior children
@@ -41,7 +41,7 @@ const createTable = (data) => {
         let tr = document.createElement('tr')
         let td1 = document.createElement('td')
         let td2 = document.createElement('td')
-        td1.textContent = record.player
+        td1.textContent = record.name
         td2.textContent = record.score
         tr.appendChild(td1)
         tr.appendChild(td2)

@@ -2,6 +2,7 @@ import showRecords from "../modules/showRecords.js";
 import createQuestionForm from "./addQuestion.js";
 import createTitle from "../modules/createTitle.js";
 import createButton from "../modules/createButton.js";
+import { game_init } from "../service/gameService.js";
 
 const menu = () => {
   document
@@ -20,7 +21,9 @@ const menu = () => {
     "body-div"
   );
 
-  playBtn.addEventListener("click", () => {});
+  playBtn.addEventListener("click", () => {
+    game_init()
+  });
 
   recordsBtn.addEventListener("click", () => {
     showRecords();

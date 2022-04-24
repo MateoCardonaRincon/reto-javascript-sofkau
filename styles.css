@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: #212529;
+  background-color: #ffffff;
 }
 
 .header {
@@ -80,7 +80,6 @@ tr:hover {
 }
 
 .title {
-  color: #9dbbda;
   display: flex;
   justify-content: center;
   margin-top: 20px;
@@ -94,4 +93,12 @@ tr:hover {
   align-items: space-between;
   margin: 100px;
   height: 100%;
+}
+
+.question-div {
+  background-color: #ffffff;
+}
+
+.answer-div {
+  background-color: #ffffff;
 }

@@ -1,6 +1,6 @@
 //Get an object with all the question information
 async function getQuestionObject(index) {
-    let questions = await JSON.parse(localStorage.getItem("Questions"));
+    let questions = await JSON.parse(localStorage.getItem("QuestionsC1"));
     let questionObject = await questions[index];
   
     return questionObject;

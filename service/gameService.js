@@ -13,6 +13,7 @@ let game_init = async  () => {
   };
 
   let btn_init_game = document.createElement("input");
+  btn_init_game.setAttribute("class", "buttons");
   let name_input = document.createElement("input");
 
 
