@@ -6,9 +6,7 @@ import {
     questions_c4,
     questions_c5,
 } from "./persistencia/questions.js";
-import RECORDS from "/records.js";
 
-// localStorage.setItem("Records", JSON.stringify(RECORDS));
 localStorage.setItem("QuestionsC1", JSON.stringify(questions_c1));
 localStorage.setItem("QuestionsC2", JSON.stringify(questions_c2));
 localStorage.setItem("QuestionsC3", JSON.stringify(questions_c3));
