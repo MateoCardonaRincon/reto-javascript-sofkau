@@ -4,10 +4,11 @@ import createTitle from "../modules/createTitle.js";
 import createButton from "../modules/createButton.js";
 import { game_init } from "../service/gameService.js";
 
+var bdiv = document.querySelector("#body-div");
+
 const menu = () => {
-  document
-    .getElementById("body-div")
-    .prepend(createTitle("menu-title", "Menú"));
+
+  bdiv.replaceChildren(createTitle("menu-title", "Menú"));
   //play button
   let playBtn = createButton("playBtn", "Jugar", "body-div");
 

@@ -1,10 +1,15 @@
 import { initRound } from "./roundService.js";
 import getRandomInt from "./randomInt.js";
 import savePlayer from '../model/playerQuery.js';
-
+import { createBackButton } from '../modules/createBackButton.js'
+import { saveMenuChildren } from "../modules/saveMenuChildren.js"
+import menu from "../views/menu.js";
 
 // Init a new game for a player
-let game_init = async  () => {
+let game_init = async () => {
+
+  const savedMenu = saveMenuChildren()
+
   document.getElementById("body-div").innerHTML = " ";
 
   let player = {
@@ -24,37 +29,35 @@ let game_init = async  () => {
   name_input.placeholder = "nombre jugador";
 
 
-  btn_init_game.addEventListener("click",()=> OnInitGameBtn(player,name_input))
+  btn_init_game.addEventListener("click", () => OnInitGameBtn(player, name_input))
 
-    
 
-  
   document.getElementById("body-div").style.backgroundColor = "white";
   document.getElementById("body-div").appendChild(name_input);
   document.getElementById("body-div").appendChild(btn_init_game);
-
+  createBackButton(savedMenu);
 };
 
 //click event to the btn init game: init the game.
-function OnInitGameBtn (player,name_input){
+function OnInitGameBtn(player, name_input) {
   player.name = name_input.value;
-    let index_question = getRandomInt();
-    initRound(0, player, index_question);  
-  };
+  let index_question = getRandomInt();
+  initRound(0, player, index_question);
+};
 
 async function endGame(player, level) {
+
   if (level > 3) {
      savePlayer(player)
      alert("Felicitaciones has ganado el juego")
     
   }
-   game_init()
+  menu()
 }
 
-function leaveGame(player){
+function leaveGame(player) {
   savePlayer(player)
-  game_init()
-
+  menu()
 }
 
 export { game_init, endGame, leaveGame };
