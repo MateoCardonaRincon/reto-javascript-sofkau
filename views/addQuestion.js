@@ -7,7 +7,8 @@ const createQuestionForm = () => {
   let savedMenu = saveMenuChildren();
 
   // Replacing the prior children
-  bdiv.replaceChildren(createTitle("record-title", "Historial de partidas"));
+  bdiv.replaceChildren(createTitle("record-title", "Añadir nueva pregunta"));
+  bdiv.appendChild(createForm());
   createBackButton(savedMenu);
   return 1;
 };
@@ -19,6 +20,44 @@ const saveMenuChildren = () => {
     menuChildren["child" + i] = children[i - 1];
   }
   return menuChildren;
+};
+
+const createForm = () => {
+  let form = document.createElement("form");
+
+  form.appendChild(newInput("question_input", "Ingrese la pregunta:", "text"));
+  form.appendChild(
+    newInput("answer_input", "Ingrese la respuesta correcta:", "text")
+  );
+  form.appendChild(
+    newInput("wrong_answer_input1", "Ingrese una respuesta incorrecta:", "text")
+  );
+  form.appendChild(
+    newInput("wrong_answer_input2", "Ingrese una respuesta incorrecta:", "text")
+  );
+  form.appendChild(
+    newInput("wrong_answer_input3", "Ingrese una respuesta incorrecta:", "text")
+  );
+
+  return form;
+};
+
+const newInput = (id, inputText, inputType) => {
+  let newInput = document.createElement("div");
+  newInput.setAttribute("id", id);
+
+  let inputTitle = document.createElement("h6");
+  inputTitle.setAttribute("class", "title");
+  inputTitle.textContent = inputText;
+
+  let nInput = document.createElement("input");
+  nInput.type = inputType;
+  nInput.required = true;
+
+  newInput.appendChild(inputTitle);
+  newInput.appendChild(nInput);
+
+  return newInput;
 };
 
 const createBackButton = (savedMenu) => {

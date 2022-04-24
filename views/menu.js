@@ -27,7 +27,7 @@ const menu = () => {
   });
 
   addQuestionBtn.addEventListener("click", () => {
-    addQuestionBtn();
+    createQuestionForm();
   });
 };
 
