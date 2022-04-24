@@ -1,5 +1,12 @@
 import createTitle from "../modules/createTitle.js";
 import createButton from "../modules/createButton.js";
+import {
+  questions_c1,
+  questions_c2,
+  questions_c3,
+  questions_c4,
+  questions_c5,
+} from "./persistencia/questions.js";
 
 var bdiv = document.querySelector("#body-div");
 
@@ -24,6 +31,7 @@ const saveMenuChildren = () => {
 
 const createForm = () => {
   let form = document.createElement("form");
+  form.setAttribute("id", "new_form");
 
   form.appendChild(newInput("question_input", "Ingrese la pregunta:", "text"));
   form.appendChild(
@@ -38,7 +46,20 @@ const createForm = () => {
   form.appendChild(
     newInput("wrong_answer_input3", "Ingrese una respuesta incorrecta:", "text")
   );
+  form.appendChild(
+    newInput("input_category", "Ingrese la categoria (Entre 1 y 5)", "number")
+  );
+  //document.getElementById("input_category").setAttribute()
 
+  const submitButm = document.createElement("button");
+  submitButm.setAttribute("type", "submit");
+  submitButm.setAttribute("value", "Submit");
+
+  form.appendChild(submitButm);
+
+  JSON.parse(localStorage.getItem("question_c1"));
+
+  let newQuestion = {};
   return form;
 };
 
