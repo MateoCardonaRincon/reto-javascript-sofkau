@@ -43,7 +43,7 @@ function OnInitGameBtn (player,name_input){
   };
 
 async function endGame(player, level) {
-  if (level > 4) {
+  if (level > 3) {
      savePlayer(player)
      alert("Felicitaciones has ganado el juego")
     
