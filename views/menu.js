@@ -1,36 +1,38 @@
+import showRecords from "../modules/showRecords.js";
+import createQuestionForm from "./addQuestion.js";
+import createTitle from "../modules/createTitle.js";
+import createButton from "../modules/createButton.js";
+import { game_init } from "../service/gameService.js";
 
-const createButton = (id, value, position) => {
-  console.log
-  let thisBtn = document.createElement("input");
-  thisBtn.setAttribute("type", "button");
-  thisBtn.setAttribute("id", id);
-  thisBtn.setAttribute("value", value);
-  document.getElementById(position).appendChild(thisBtn);
-  return thisBtn;
-};
+var bdiv = document.querySelector("#body-div");
 
 const menu = () => {
+
+  bdiv.replaceChildren(createTitle("menu-title", "Menú"));
   //play button
-  createButton("playBtn", "Jugar", "top")
+  let playBtn = createButton("playBtn", "Jugar", "body-div");
 
   // records button
-  createButton("recordsBtn", "Historial", "middle")
+  let recordsBtn = createButton("recordsBtn", "Historial", "body-div");
 
   // add a question
-  createButton("addQuestionBtn", "Añadir pregunta", "bottom")
+  let addQuestionBtn = createButton(
+    "addQuestionBtn",
+    "Añadir pregunta",
+    "body-div"
+  );
 
-  // events
-  // playBtn.addEventListener("click", () => {
-  //   console.log("Jugar");
-  // });
+  playBtn.addEventListener("click", () => {
+    game_init()
+  });
 
-  // recordsBtn.addEventListener("click", () => {
-  //   console.log("Historial");
-  // });
+  recordsBtn.addEventListener("click", () => {
+    showRecords();
+  });
 
-  // addQuestionBtn.addEventListener("click", () => {
-  //   console.log("Agregar preguntas");
-  // });
+  addQuestionBtn.addEventListener("click", () => {
+    createQuestionForm();
+  });
 };
 
 export default menu;
