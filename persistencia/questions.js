@@ -117,7 +117,7 @@ let questions_c2 = [
     question: "¿Cuanto es 2*2?",
     answers: [
       {
-        answer: "6",
+        answer: "4",
         is_correct: true,
       },
       {
@@ -205,7 +205,7 @@ let questions_c2 = [
     question: "¿Cuanto es 3*2?",
     answers: [
       {
-        answer: "9",
+        answer: "6",
         is_correct: true,
       },
       {
@@ -217,7 +217,7 @@ let questions_c2 = [
         is_correct: false,
       },
       {
-        answer: "6",
+        answer: "32",
         is_correct: false,
       },
     ],
