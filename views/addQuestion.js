@@ -1,12 +1,5 @@
 import createTitle from "../modules/createTitle.js";
 import createButton from "../modules/createButton.js";
-import {
-  questions_c1,
-  questions_c2,
-  questions_c3,
-  questions_c4,
-  questions_c5,
-} from "./persistencia/questions.js";
 
 var bdiv = document.querySelector("#body-div");
 
@@ -46,39 +39,59 @@ const createForm = () => {
   form.appendChild(
     newInput("wrong_answer_input3", "Ingrese una respuesta incorrecta:", "text")
   );
-  form.appendChild(
-    newInput("input_category", "Ingrese la categoria (Entre 1 y 5)", "number")
+  const inputRange = newInput(
+    "input_category",
+    "Ingrese la categoria (Entre 1 y 5)",
+    "range"
   );
-  //document.getElementById("input_category").setAttribute()
+  inputRange.type = "range";
+  inputRange.min = "1";
+  inputRange.max = "5";
+  inputRange.step = "1";
+  form.appendChild(inputRange);
 
   const submitButm = document.createElement("button");
   submitButm.setAttribute("type", "submit");
-  submitButm.setAttribute("value", "Submit");
+  submitButm.textContent = "Add question";
+
+  const frmLogin = form;
+  frmLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = Object.fromEntries(new FormData(e.target).entries());
+    console.log(e);
+  });
 
   form.appendChild(submitButm);
 
-  JSON.parse(localStorage.getItem("question_c1"));
+  // var categoryValue = document
+  //   .getElementById("input_category")
+  //   .getAttribute("value");
+  // console.log(categoryValue);
 
-  let newQuestion = {};
+  // JSON.parse(
+  //   localStorage.getItem(
+  //     "QuestionsC" +
+  //   )
+  // );
+
+  //let newQuestion = {};
   return form;
 };
 
 const newInput = (id, inputText, inputType) => {
-  let newInput = document.createElement("div");
-  newInput.setAttribute("id", id);
-
-  let inputTitle = document.createElement("h6");
-  inputTitle.setAttribute("class", "title");
-  inputTitle.textContent = inputText;
+  // let inputTitle = document.createElement("h6");
+  // inputTitle.setAttribute("class", "title");
+  // inputTitle.textContent = inputText;
 
   let nInput = document.createElement("input");
+  nInput.setAttribute("id", id);
   nInput.type = inputType;
   nInput.required = true;
 
-  newInput.appendChild(inputTitle);
-  newInput.appendChild(nInput);
+  //newInput.appendChild(inputTitle);
+  //newInput.appendChild(nInput);
 
-  return newInput;
+  return nInput;
 };
 
 const createBackButton = (savedMenu) => {
