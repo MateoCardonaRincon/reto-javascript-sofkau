@@ -3,7 +3,7 @@
 En este proyecto se desarrollaron habilidades en el manejo del DOM con JavaScript,
 usando los métodos más comunes de manipulación como createElement(), appendChild(),
 replaceChildren(), setAttributes(), getElementById(), entre otros. <br>
-Con estos métodos, pudimos añadir y remover elementos HTML de nodos específicos del DOM. <br>
+Con estos métodos, pudimos crear nodos y añadir y remover elementos HTML de nodos específicos del DOM. <br>
 
 ### Funcionalidades del juego
 
