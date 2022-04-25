@@ -1,4 +1,4 @@
-import showRecords from "../modules/showRecords.js";
+import { showRecords } from "./records.js";
 import createQuestionForm from "./addQuestion.js";
 import createTitle from "../modules/createTitle.js";
 import createButton from "../modules/createButton.js";

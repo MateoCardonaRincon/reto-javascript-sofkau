@@ -96,13 +96,27 @@ tr:hover {
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: space-between;
+  height: 100%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
-.question-div {
-  background-color: #ffffff;
+
+.input-form {
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.answer-div {
-  background-color: #ffffff;
+.cat-span {
+  font-weight: bold;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -1,12 +1,6 @@
 import createTitle from "../modules/createTitle.js";
 import createButton from "../modules/createButton.js";
-import {
-  questions_c1,
-  questions_c2,
-  questions_c3,
-  questions_c4,
-  questions_c5,
-} from "./persistencia/questions.js";
+import { saveMenuChildren } from "../modules/saveMenuChildren.js";
 
 var bdiv = document.querySelector("#body-div");
 
@@ -20,65 +14,73 @@ const createQuestionForm = () => {
   return 1;
 };
 
-const saveMenuChildren = () => {
-  let menuChildren = {};
-  let children = bdiv.children;
-  for (var i = 1; children.length >= i; i++) {
-    menuChildren["child" + i] = children[i - 1];
-  }
-  return menuChildren;
-};
-
 const createForm = () => {
   let form = document.createElement("form");
   form.setAttribute("id", "new_form");
+  form.setAttribute("class", "form");
 
-  form.appendChild(newInput("question_input", "Ingrese la pregunta:", "text"));
-  form.appendChild(
-    newInput("answer_input", "Ingrese la respuesta correcta:", "text")
+  let qu_input = newInput("question_input", "Ingrese la pregunta:", "text");
+  let ans_input = newInput(
+    "answer_input",
+    "Ingrese la respuesta correcta:",
+    "text"
   );
-  form.appendChild(
-    newInput("wrong_answer_input1", "Ingrese una respuesta incorrecta:", "text")
+  let wrong1 = newInput(
+    "wrong_answer_input1",
+    "Ingrese una respuesta incorrecta:",
+    "text"
   );
-  form.appendChild(
-    newInput("wrong_answer_input2", "Ingrese una respuesta incorrecta:", "text")
+  let wrong2 = newInput(
+    "wrong_answer_input2",
+    "Ingrese una respuesta incorrecta:",
+    "text"
   );
-  form.appendChild(
-    newInput("wrong_answer_input3", "Ingrese una respuesta incorrecta:", "text")
+  let wrong3 = newInput(
+    "wrong_answer_input3",
+    "Ingrese una respuesta incorrecta:",
+    "text"
   );
-  form.appendChild(
-    newInput("input_category", "Ingrese la categoria (Entre 1 y 5)", "number")
+  let inputRange = newInput(
+    "input_category",
+    "Ingrese la categoria (Entre 1 y 5)",
+    "range"
   );
-  //document.getElementById("input_category").setAttribute()
+  inputRange.min = "1";
+  inputRange.max = "5";
+  inputRange.step = "1";
+
+  let label = document.createElement("span")
+  label.setAttribute("class", "cat-span")
+  label.textContent = "Categoría (mín: 1, máx: 5)"
 
   const submitButm = document.createElement("button");
   submitButm.setAttribute("type", "submit");
-  submitButm.setAttribute("value", "Submit");
+  submitButm.setAttribute("class", "buttons");
+  submitButm.textContent = "Añadir pregunta";
+  submitButm.addEventListener("click", () => {
+    loadNewQuestion(qu_input, ans_input, wrong1, wrong2, wrong3, inputRange);
+  });
 
+  form.appendChild(qu_input);
+  form.appendChild(ans_input);
+  form.appendChild(wrong1);
+  form.appendChild(wrong2);
+  form.appendChild(wrong3);
+  form.appendChild(label);
+  form.appendChild(inputRange);
   form.appendChild(submitButm);
 
-  JSON.parse(localStorage.getItem("question_c1"));
-
-  let newQuestion = {};
   return form;
 };
 
 const newInput = (id, inputText, inputType) => {
-  let newInput = document.createElement("div");
-  newInput.setAttribute("id", id);
-
-  let inputTitle = document.createElement("h6");
-  inputTitle.setAttribute("class", "title");
-  inputTitle.textContent = inputText;
-
   let nInput = document.createElement("input");
+  nInput.setAttribute("placeholder", inputText);
+  nInput.setAttribute("id", id);
+  nInput.setAttribute("class", "input-form");
   nInput.type = inputType;
   nInput.required = true;
-
-  newInput.appendChild(inputTitle);
-  newInput.appendChild(nInput);
-
-  return newInput;
+  return nInput;
 };
 
 const createBackButton = (savedMenu) => {
@@ -91,6 +93,56 @@ const createBackButton = (savedMenu) => {
     bdiv.appendChild(savedMenu.child4);
   });
   return backBtn;
+};
+
+const setNewQuestion = (qu, ans, wrng1, wrng2, wrng3) => {
+  let newQuestion = {
+    id: 6,
+    question: qu,
+    answers: [
+      {
+        answer: ans,
+        is_correct: true,
+      },
+      {
+        answer: wrng1,
+        is_correct: false,
+      },
+      {
+        answer: wrng2,
+        is_correct: false,
+      },
+      {
+        answer: wrng3,
+        is_correct: false,
+      },
+    ],
+  };
+  return newQuestion;
+};
+
+const loadNewQuestion = (
+  qu_input,
+  ans_input,
+  wrong1,
+  wrong2,
+  wrong3,
+  inputRange
+) => {
+  let qu = qu_input.value;
+  let ans = ans_input.value;
+  let wrng1 = wrong1.value;
+  let wrng2 = wrong2.value;
+  let wrng3 = wrong3.value;
+  let cat = inputRange.value;
+
+  let questions = JSON.parse(localStorage.getItem("QuestionsC" + cat));
+
+  let new_question = setNewQuestion(qu, ans, wrng1, wrng2, wrng3);
+
+  questions.push(new_question);
+
+  localStorage.setItem("QuestionsC" + cat, JSON.stringify(questions));
 };
 
 export default createQuestionForm;

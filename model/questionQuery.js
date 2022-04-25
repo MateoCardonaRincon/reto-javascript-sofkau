@@ -4,6 +4,7 @@ async function getQuestionObject(index, category) {
   switch (category) {
     case 0:
       questions = await JSON.parse(localStorage.getItem("QuestionsC1"));
+      console.log(questions);
       break;
     case 1:
       questions = await JSON.parse(localStorage.getItem("QuestionsC2"));
@@ -24,12 +25,13 @@ async function getQuestionObject(index, category) {
 }
 
 // get a posible answer for a question
-async function getChoice(index_question, index_choice, index_round) {
+async function getChoice(index_question, index_round) {
   let question = await getQuestionObject(index_question, index_round);
+  
   let choices = await question.answers;
-  let choice_object = await choices[index_choice];
-  let choice = await choice_object.answer;
-  return choice;
+  // let choice_object = await choices[index_choice];
+  // let choice = await choice_object.answer;
+  return choices;
 }
 
 //Get the question

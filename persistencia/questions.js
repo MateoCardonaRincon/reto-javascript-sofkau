@@ -217,7 +217,7 @@ let questions_c2 = [
         is_correct: false,
       },
       {
-        answer: "6",
+        answer: "32",
         is_correct: false,
       },
     ],
